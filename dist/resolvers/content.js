@@ -29,7 +29,6 @@ exports.default = {
         },
         createTopic: async (_, { chapter_id, topicInputDetails }) => {
             let chapter = await Chapter_1.ChapterModel.findOne({ _id: chapter_id }).exec();
-
             if (!chapter)
                 throw new graphql_1.GraphQLError(`This chapter is doesn't exists in the system.`, {
                     extensions: {

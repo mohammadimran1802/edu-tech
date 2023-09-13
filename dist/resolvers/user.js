@@ -30,8 +30,12 @@ exports.default = {
                 code: 200,
                 success: true,
                 message: `Login successful`,
-                authToken: (0, jwt_1.createToken)({ id: user._id.toString(), username: user.username, role: user.role }),
-                user
+                authToken: (0, jwt_1.createToken)({
+                    id: user._id.toString(),
+                    username: user.username,
+                    role: user.role,
+                }),
+                user,
             };
         },
         createUser: async (_, { userInput: { username, password, firstName, lastName, email } }) => {
@@ -55,9 +59,23 @@ exports.default = {
                 code: 200,
                 success: true,
                 message: `Login successful`,
-                authToken: (0, jwt_1.createToken)({ id: user._id.toString(), username: user.username, role: user.role }),
-                user
+                authToken: (0, jwt_1.createToken)({
+                    id: user._id.toString(),
+                    username: user.username,
+                    role: user.role,
+                }),
+                user,
             };
+        },
+    },
+    Query: {
+        getUser: async (_, { _id }) => {
+            let user = await User_1.UserModel.findOne({ _id: _id }).exec();
+            if (user == null)
+                throw new graphql_1.GraphQLError(`This user doesn't exists in the system.`, {
+                    extensions: { code: "INVALID_USER" },
+                });
+            return user;
         },
     },
 };

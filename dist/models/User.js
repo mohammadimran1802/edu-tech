@@ -30,4 +30,4 @@ exports.userSchema = new mongoose_1.Schema({
         score: { type: Number, default: null },
     },
 });
-exports.UserModel = mongoose_1.models.User || (0, mongoose_1.model)('User', exports.userSchema, 'user');
+exports.UserModel = mongoose_1.models.User || (0, mongoose_1.model)("User", exports.userSchema, "user");

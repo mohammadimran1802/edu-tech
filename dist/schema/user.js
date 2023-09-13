@@ -10,13 +10,13 @@ exports.default = (0, apollo_server_1.gql) `
     STUDENT
   }
   type User {
-    id: ID!
-    username: String!
+    id: ObjectId!
+    username: String
     role: Role
-    email: String!
-    firstName: String!
-    lastName: String!
-    progress: Progress!
+    email: String
+    firstName: String
+    lastName: String
+    progress: Progress
   }
 
   input UserInputDetail {
@@ -41,6 +41,6 @@ exports.default = (0, apollo_server_1.gql) `
   }
 
   type Query {
-    getUser(id: ID!): User
+    getUser(_id: ObjectId!): User!
   }
 `;
