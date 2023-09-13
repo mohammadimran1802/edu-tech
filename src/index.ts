@@ -13,18 +13,10 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req }),
   cors: {
     credentials: true,
-    origin: (origin, callback) => {
-      const whitelist = [
-        "*",
-        "https://edutechfront-ghgoydeql-mohammadimran1802.vercel.app/",
-      ];
-
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [
+      "*",
+      "https://edutechfront-ghgoydeql-mohammadimran1802.vercel.app/",
+    ],
   },
 });
 
